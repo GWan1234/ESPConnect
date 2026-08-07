@@ -204,9 +204,6 @@ function normalizeYoutubeVideoId(value: string | null | undefined): string | nul
               <span class="maker-tools__thumbnail-icon" aria-hidden="true">
                 <v-icon :icon="tool.icon" size="18" />
               </span>
-              <span class="maker-tools__play-badge" aria-hidden="true">
-                <v-icon icon="mdi-play" size="24" />
-              </span>
             </a>
             <div v-else class="maker-tools__icon" aria-hidden="true">
               <v-icon :icon="tool.icon" size="28" />
@@ -380,7 +377,7 @@ function normalizeYoutubeVideoId(value: string | null | undefined): string | nul
 .maker-tools__card {
   position: relative;
   display: flex;
-  min-height: 224px;
+  min-height: 252px;
   flex-direction: column;
   overflow: hidden;
   border: 1px solid var(--maker-tools-line);
@@ -396,7 +393,7 @@ function normalizeYoutubeVideoId(value: string | null | undefined): string | nul
 .maker-tools__card-body {
   display: grid;
   flex: 1 1 auto;
-  grid-template-columns: minmax(150px, 190px) minmax(0, 1fr);
+  grid-template-columns: minmax(200px, 250px) minmax(0, 1fr);
   align-items: start;
   gap: 18px;
   padding: 16px;
@@ -451,8 +448,7 @@ function normalizeYoutubeVideoId(value: string | null | undefined): string | nul
   outline-offset: 3px;
 }
 
-.maker-tools__thumbnail-icon,
-.maker-tools__play-badge {
+.maker-tools__thumbnail-icon {
   position: absolute;
   z-index: 1;
   display: grid;
@@ -468,17 +464,6 @@ function normalizeYoutubeVideoId(value: string | null | undefined): string | nul
   height: 30px;
   border-radius: 8px;
   background: rgba(5, 20, 18, 0.62);
-}
-
-.maker-tools__play-badge {
-  top: 50%;
-  left: 50%;
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
-  background: rgba(53, 214, 184, 0.92);
-  color: #06251f;
-  transform: translate(-50%, -50%);
 }
 
 .maker-tools__icon {
