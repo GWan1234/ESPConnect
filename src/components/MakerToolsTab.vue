@@ -4,6 +4,7 @@ import { useI18n } from 'vue-i18n';
 import { useTheme } from 'vuetify';
 import arduinoMakerWorkshopThumbnail from '../assets/tool-thumbnails/arduino-maker-workshop.jpg';
 import espBoardVaultThumbnail from '../assets/tool-thumbnails/esp-board-vault.jpg';
+import espPinoutExplorerThumbnail from '../assets/tool-thumbnails/esp-pinout-explorer.png';
 import gpioViewerThumbnail from '../assets/tool-thumbnails/gpio-viewer.jpg';
 import partitionBuilderThumbnail from '../assets/tool-thumbnails/partition-builder.jpg';
 import videoConversionThumbnail from '../assets/tool-thumbnails/video-conversion.jpg';
@@ -37,6 +38,17 @@ const isDarkTheme = computed(() => theme.global.current.value.dark);
 const coffeeUrl = 'https://buymeacoffee.com/thelastoutpostworkshop';
 
 const toolItems: ToolItem[] = [
+  {
+    key: 'esp-pinout-explorer',
+    titleKey: 'makerTools.items.espPinoutExplorer.title',
+    icon: 'mdi-chip',
+    url: 'https://thelastoutpostworkshop.github.io/esp-pinout-explorer/',
+    descriptionKey: 'makerTools.items.espPinoutExplorer.description',
+    thumbnailSrc: espPinoutExplorerThumbnail,
+    sourceUrl: 'https://github.com/thelastoutpostworkshop/esp-pinout-explorer',
+    sourceLabelKey: 'makerTools.items.espPinoutExplorer.sourceLabel',
+    tutorialUrl: 'https://youtu.be/l357x8bTJg0',
+  },
   {
     key: 'esp-board-vault',
     titleKey: 'makerTools.items.espBoardVault.title',
