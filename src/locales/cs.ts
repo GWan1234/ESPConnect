@@ -21,6 +21,7 @@ const cs = {
   resources: {
     tutorial: 'Návod',
     buyCoffee: 'Koupit kávu',
+    donatePaypal: 'Darovat přes PayPal',
     getHelp: 'Získat pomoc',
   },
   makerTools: {

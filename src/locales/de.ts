@@ -21,6 +21,7 @@ const de = {
   resources: {
     tutorial: 'Tutorial',
     buyCoffee: 'Kauf mir einen Kaffee',
+    donatePaypal: 'Über PayPal spenden',
     getHelp: 'Hilfe erhalten',
   },
   makerTools: {

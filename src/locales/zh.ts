@@ -21,6 +21,7 @@ const zh = {
   resources: {
     tutorial: '教程',
     buyCoffee: '请我喝杯咖啡',
+    donatePaypal: '通过 PayPal 捐款',
     getHelp: '获取帮助',
   },
   makerTools: {

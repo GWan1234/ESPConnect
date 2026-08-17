@@ -4405,6 +4405,11 @@ const resourceLinks = computed(() => [
     icon: 'mdi-coffee',
   },
   {
+    title: t('resources.donatePaypal'),
+    href: 'https://www.paypal.com/donate/?hosted_button_id=GF3QFYJ2BX9SA',
+    icon: 'mdi-coffee-outline',
+  },
+  {
     title: t('resources.getHelp'),
     href: 'https://github.com/thelastoutpostworkshop/ESPConnect',
     icon: 'mdi-lifebuoy',

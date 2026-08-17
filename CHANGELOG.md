@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.20
+### Improvement
+- Added a PayPal donation link to Resources.
+
 ## 1.1.19
 ### Improvement
 - Added ESP Pinout Explorer to Maker Tools, with a local preview image plus links to the explorer, its tutorial, and its source repository.

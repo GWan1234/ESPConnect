@@ -21,6 +21,7 @@ const tr = {
   resources: {
     tutorial: 'Öğretici',
     buyCoffee: 'Bana Bir Kahve Ismarla',
+    donatePaypal: 'PayPal ile bağış yap',
     getHelp: 'Yardım Al',
   },
   makerTools: {
