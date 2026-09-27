@@ -173,10 +173,24 @@ export async function requestSerialPort(_filters?: SerialPortFilter[]) {
 
 export function createEsptoolClient(options: EsptoolOptions): EsptoolClient {
   const status = (payload: StatusPayload) => options.onStatus?.(payload);
+  const connectionScenario = new URLSearchParams(window.location.search).get('connectionScenario');
+  let partitionReadAttempted = false;
 
   const loader: MockLoader = {
-    flashId: async () => 0x1640ef,
+    flashId: async () => {
+      if (connectionScenario === 'lost-communication' && partitionReadAttempted) {
+        throw new Error('Timed out waiting for packet header');
+      }
+      return 0x1640ef;
+    },
     readFlash: async (offset, length) => {
+      partitionReadAttempted = true;
+      if (connectionScenario === 'lost-communication' || connectionScenario === 'partition-read-error') {
+        throw new Error('Failed to read flash after retries and deep recovery failed');
+      }
+      if (connectionScenario === 'blank-flash') {
+        return new Uint8Array(length).fill(0xff);
+      }
       if (offset === PARTITION_TABLE_OFFSET) {
         return mockPartitionTable.subarray(0, length);
       }

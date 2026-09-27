@@ -32,6 +32,33 @@ test('Connect happy path', async ({ page }) => {
   await expect(summary).toContainText('aa:bb:cc:dd:ee:ff');
 });
 
+test('Lost communication during discovery does not report ready to flash', async ({ page }) => {
+  await page.goto('/?e2e=1&connectionScenario=lost-communication');
+  await page.getByTestId('connect-btn').click();
+
+  const dialog = page.getByRole('dialog');
+  await expect(dialog).toContainText('Timed out waiting for packet header');
+  await expect(page.getByTestId('connection-status')).toContainText('Disconnected');
+  await expect(page.getByTestId('device-summary')).toHaveCount(0);
+  await dialog.getByRole('button', { name: 'Got it' }).click();
+  await expect(page.getByTestId('connect-btn')).toBeEnabled();
+  await page.getByText('Session Log', { exact: true }).click();
+  await expect(page.locator('.log-output')).toContainText('Device communication check failed');
+  await expect(page.locator('.log-output')).not.toContainText('Ready to flash');
+});
+
+for (const scenario of ['blank-flash', 'partition-read-error']) {
+  test(`Responsive device remains connected with ${scenario}`, async ({ page }) => {
+    await page.goto(`/?e2e=1&connectionScenario=${scenario}`);
+    await page.getByTestId('connect-btn').click();
+
+    await expect(page.getByTestId('device-summary')).toBeVisible();
+    await expect(page.getByTestId('connection-status')).toContainText('Connected');
+    await page.getByText('Session Log', { exact: true }).click();
+    await expect(page.locator('.log-output')).toContainText('Connection established. Ready to flash.');
+  });
+}
+
 test('Tool happy path', async ({ page }) => {
   await connectHappyPath(page);
 

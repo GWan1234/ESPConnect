@@ -6212,7 +6212,6 @@ async function connect() {
     queueMicrotask(() => {
       suspendBaudWatcher = previousSuspendState;
     });
-    connected.value = true;
     appendLog(`Handshake complete with ${esp.chipName}. Collecting device details...`, '[ESPConnect-Debug]');
 
     const englishUnknown = t('deviceInfo.unknown', {}, { locale: 'en' });
@@ -6433,6 +6432,15 @@ async function connect() {
     } else {
       partitionTable.value = [];
       appMetadataLoaded.value = false;
+    }
+
+    // Optional probes can swallow transport errors, including failed recovery.
+    // Require a fresh response before exposing the device as ready for operations.
+    try {
+      await runLoaderOperation(() => client.loader.flashId());
+    } catch (error) {
+      appendLog(`Device communication check failed: ${formatErrorMessage(error)}`, '[ESPConnect-Warn]');
+      throw error;
     }
 
     if (usbBridge) {

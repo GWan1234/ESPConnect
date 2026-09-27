@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.24
+### Fixed
+- Extended ESP synchronization errors now show manual boot-mode guidance during connection and return to maintenance mode ([issue #178](https://github.com/thelastoutpostworkshop/ESPConnect/issues/178)).
+- Verify device communication before reporting "Connected" or "Ready to flash", preventing false success after communication or recovery failures while allowing responsive boards with blank flash or partition-read errors to connect ([issue #178](https://github.com/thelastoutpostworkshop/ESPConnect/issues/178)).
+
 ## 1.1.23
 ### Fixed
 - Corrected crystal-frequency detection at higher connection baud rates for ESP32, ESP8266, ESP32-C2, and ESP32-C5 by using the active baud rate ([issue #179](https://github.com/thelastoutpostworkshop/ESPConnect/issues/179)).
