@@ -89,7 +89,8 @@ ESPConnect is published in two variants:
 ## Tips & Troubleshooting
 - If automatic boot entry fails, hold **BOOT**, tap **RESET**, keep holding **BOOT** while clicking **Connect**, then release when you see the ESP-ROM banner.  
 - Only one application can use the USB serial bridge at a time. Close Arduino IDE, PlatformIO, or other tools before connecting.  
-- You can change baud rate even after connecting. If transfers stall, drop to 460800 or 115200 bps.  
+- If connection attempts or flash reads time out, disconnect and reconnect the USB cable, select **115200** in the baud-rate selector **before clicking Connect**, and try again. Use the manual **BOOT/RESET** procedure above if needed.
+- You can also change baud rate after connecting. If transfers stall, try a lower rate such as **460800** or **115200** bps.
 - Cancelling a flash or download pauses safely. Simply run it again when you’re ready. 
 ### ESP8266 Compatibility
 >ESP8266 devices can connect, but support is very limited.
